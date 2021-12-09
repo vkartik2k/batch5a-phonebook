@@ -1,6 +1,8 @@
 import React from 'react'
 import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
+import { useDispatch } from 'react-redux';
+import { toggle_fav } from '../actions';
 
 const styles = {
     container : {
@@ -49,6 +51,8 @@ function stringAvatar(name) {
 }
 
 function ContactCard(props) {
+    const dispatch = useDispatch();
+
     return (
         <div style={styles.container}>
             <div>
@@ -66,6 +70,7 @@ function ContactCard(props) {
                     max={1}
                     onChange={(event, newValue) => {
                         // setValue(newValue);
+                        dispatch(toggle_fav(props.id))
                     }}
                 />
             </div>
